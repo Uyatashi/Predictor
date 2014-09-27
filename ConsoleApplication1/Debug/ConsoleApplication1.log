@@ -1,0 +1,13 @@
+﻿Build started 9/26/2014 3:14:49 PM.
+     1>Project "O:\Predictor\Predictor\ConsoleApplication1\ConsoleApplication1.vcxproj" on node 2 (ClCompile target(s)).
+     1>ClCompile:
+         F:\VS\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt main.c
+         main.c
+     1>o:\predictor\predictor\consoleapplication1\main.c(18): warning C4047: 'function' : 'FILE **' differs in levels of indirection from 'FILE *'
+     1>o:\predictor\predictor\consoleapplication1\main.c(18): warning C4024: 'fopen_s' : different types for formal and actual parameter 1
+     1>o:\predictor\predictor\consoleapplication1\main.c(18): warning C4700: uninitialized local variable 'input1' used
+     1>Done Building Project "O:\Predictor\Predictor\ConsoleApplication1\ConsoleApplication1.vcxproj" (ClCompile target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.10
