@@ -1,13 +1,47 @@
-﻿Build started 9/26/2014 3:14:49 PM.
-     1>Project "O:\Predictor\Predictor\ConsoleApplication1\ConsoleApplication1.vcxproj" on node 2 (ClCompile target(s)).
+﻿Build started 9/29/2014 2:18:51 PM.
+     1>Project "O:\Predictor\ConsoleApplication1\ConsoleApplication1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          F:\VS\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt main.c
          main.c
-     1>o:\predictor\predictor\consoleapplication1\main.c(18): warning C4047: 'function' : 'FILE **' differs in levels of indirection from 'FILE *'
-     1>o:\predictor\predictor\consoleapplication1\main.c(18): warning C4024: 'fopen_s' : different types for formal and actual parameter 1
-     1>o:\predictor\predictor\consoleapplication1\main.c(18): warning C4700: uninitialized local variable 'input1' used
-     1>Done Building Project "O:\Predictor\Predictor\ConsoleApplication1\ConsoleApplication1.vcxproj" (ClCompile target(s)).
+     1>o:\predictor\consoleapplication1\main.c(13): warning C4018: '<' : signed/unsigned mismatch
+     1>o:\predictor\consoleapplication1\main.c(18): error C2143: syntax error : missing ';' before 'type'
+     1>o:\predictor\consoleapplication1\main.c(21): error C2143: syntax error : missing ';' before 'type'
+     1>o:\predictor\consoleapplication1\main.c(22): error C2143: syntax error : missing ';' before 'type'
+     1>o:\predictor\consoleapplication1\main.c(23): error C2143: syntax error : missing ';' before 'type'
+     1>o:\predictor\consoleapplication1\main.c(24): error C2143: syntax error : missing ';' before 'type'
+     1>o:\predictor\consoleapplication1\main.c(25): error C2143: syntax error : missing ';' before 'type'
+     1>o:\predictor\consoleapplication1\main.c(26): error C2143: syntax error : missing ';' before 'type'
+     1>o:\predictor\consoleapplication1\main.c(27): error C2143: syntax error : missing ';' before 'type'
+     1>o:\predictor\consoleapplication1\main.c(28): error C2065: 'argc' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(33): error C2065: 'input1' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(33): error C2065: 'argv' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(33): error C2109: subscript requires array or pointer type
+     1>o:\predictor\consoleapplication1\main.c(33): error C2198: 'fopen' : too few arguments for call
+     1>o:\predictor\consoleapplication1\main.c(33): warning C4047: '=' : 'int' differs in levels of indirection from 'FILE *'
+     1>o:\predictor\consoleapplication1\main.c(34): error C2065: 'input1' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(34): warning C4047: '==' : 'int' differs in levels of indirection from 'void *'
+     1>o:\predictor\consoleapplication1\main.c(35): error C2065: 'tempstr' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(35): warning C4047: 'function' : 'char *' differs in levels of indirection from 'int'
+     1>o:\predictor\consoleapplication1\main.c(35): warning C4024: 'fgets' : different types for formal and actual parameter 1
+     1>o:\predictor\consoleapplication1\main.c(35): error C2065: 'input1' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(35): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'int'
+     1>o:\predictor\consoleapplication1\main.c(35): warning C4024: 'fgets' : different types for formal and actual parameter 3
+     1>o:\predictor\consoleapplication1\main.c(37): error C2065: 'tempstr' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(37): warning C4047: 'function' : 'char *' differs in levels of indirection from 'int'
+     1>o:\predictor\consoleapplication1\main.c(37): warning C4024: 'checkhex' : different types for formal and actual parameter 1
+     1>o:\predictor\consoleapplication1\main.c(42): error C2065: 'tempstr' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(42): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>o:\predictor\consoleapplication1\main.c(42): warning C4024: 'puts' : different types for formal and actual parameter 1
+     1>o:\predictor\consoleapplication1\main.c(43): error C2065: 'tempnum' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(43): error C2065: 'tempstr' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(43): warning C4047: 'function' : 'const char *' differs in levels of indirection from 'int'
+     1>o:\predictor\consoleapplication1\main.c(43): warning C4024: 'strtol' : different types for formal and actual parameter 1
+     1>o:\predictor\consoleapplication1\main.c(44): error C2065: 'tempnum' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(56): error C2065: 'input1' : undeclared identifier
+     1>o:\predictor\consoleapplication1\main.c(56): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'int'
+     1>o:\predictor\consoleapplication1\main.c(56): warning C4024: 'fclose' : different types for formal and actual parameter 1
+     1>Done Building Project "O:\Predictor\ConsoleApplication1\ConsoleApplication1.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:00.10
+Time Elapsed 00:00:00.11
