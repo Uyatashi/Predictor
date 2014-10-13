@@ -1,0 +1,25 @@
+2-bit Predictor
+Prediction	Action	Prediction	Action
+4194304		T'		T (Hit)
+4194308		T'		T (Hit)
+4194308		T'		NT
+4194304		T		T (Hit)
+4194308		T'		T (Hit)
+4194308		T'		NT
+4194304		T		NT
+4194336		NT		T
+4194336		T'		T (Hit)
+4194336		T'		T (Hit)
+4194336		T'		T (Hit)
+4194336		T'		NT
+4194368		T		T (Hit)
+4194368		T'		T (Hit)
+4194368		T'		T (Hit)
+4194364		T'		NT
+4194364		T		NT
+4194364		NT		NT (Hit)
+4194368		NT'		T
+4194364		NT		NT (Hit)
+4194364		NT'		NT (Hit)
+4194364		NT'		NT (Hit)
+4194368		NT'		T

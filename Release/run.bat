@@ -1,1 +1,1 @@
-ConsoleApplication1 temp.txt
+ConsoleApplication1 temp

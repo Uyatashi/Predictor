@@ -3,6 +3,7 @@
 
 
 void bit1w(int a, FILE *temp);
+void bit2w(int a, FILE *temp);
 
 int parser(char *str, FILE *in)
 {
@@ -20,11 +21,7 @@ int parser(char *str, FILE *in)
 int checkhex(char* hex)
 {
 	int i;
-	for( i = 0; i < 8; i++ )
-	{ 
-		//printf("%c", hex[i]);
-		if (!((hex[i] >= 48 && hex[i] <= 57) || (hex[i] >= 65 && hex[i] <= 70))) { return(0); }
-	}
+	for( i = 0; i < 8; i++ ) { if (!((hex[i] >= 48 && hex[i] <= 57) || (hex[i] >= 65 && hex[i] <= 70))) { return(0); } }
 	return(1);
 }
 
@@ -34,21 +31,48 @@ void initbit1(FILE *temp) { fprintf(temp,"1-bit Predictor\nPrediction\tAction\n"
 
 void initbit2(FILE *temp) { fprintf(temp,"2-bit Predictor\nPrediction\tAction\tPrediction\tAction\n"); }
 
-int bit1(int pr, int s, FILE *temp)
+int bit1(int pr, int s, FILE *temp, long lid)
 {
-	if ((pr == 1) && (s == 1))	{ bit1w(3, temp); return(1); }
-	else if ((pr == 1) && (s == 0)) { bit1w(2, temp); return(0); }
-	else if ((pr == 0) && (s == 1)) { bit1w(1, temp); return(1); }
-	else { bit1w(0, temp); return(0); }
+	if ((pr == 1) && (s == 1))	{ bit1w(3, temp, lid); return(1); }
+	else if ((pr == 1) && (s == 0)) { bit1w(2, temp, lid); return(0); }
+	else if ((pr == 0) && (s == 1)) { bit1w(1, temp, lid); return(1); }
+	else { bit1w(0, temp, lid); return(0); }
 }
 
-void bit1w(int a, FILE *temp)
+void bit1w(int a, FILE *temp, long lid)
 {
 	switch(a)
 	{
-		case 0:	{ fprintf(temp,"NT\t\tNT (Hit)\n"); break; }
-		case 1: { fprintf(temp,"NT\t\tT\n"); break; }
-		case 2: { fprintf(temp,"T\t\tNT\n"); break; }
-		case 3: { fprintf(temp,"T\t\tT (Hit)\n"); }
+		case 0:	{ fprintf(temp,"%lu\t\tNT\t\tNT (Hit)\n", lid); break; }
+		case 1: { fprintf(temp,"%lu\t\tNT\t\tT\n", lid); break; }
+		case 2: { fprintf(temp,"%lu\t\tT\t\tNT\n", lid); break; }
+		case 3: { fprintf(temp,"%lu\t\tT\t\tT (Hit)\n", lid); }
+	}
+}
+
+int bit2(int pr, int s, FILE *temp, long lid)
+{
+	if ((pr == 0)  && (s == 0)) { bit2w(0, temp, lid); return(0); }
+	else if ((pr == 0) && (s == 1)) { bit2w(1, temp, lid); return(1); }
+	else if ((pr == 1) && (s == 0)) { bit2w(2, temp, lid); return(0); }
+	else if ((pr == 1) && (s == 1)) { bit2w(3, temp, lid); return(2); }
+	else if ((pr == 2) && (s == 0)) { bit2w(4, temp, lid); return(1); }
+	else if ((pr == 2) && (s == 1)) { bit2w(5, temp, lid); return(3); }
+	else if ((pr == 3) && (s == 0)) { bit2w(6, temp, lid); return(2); }
+	else { bit2w(7, temp, lid); return(3); }
+}
+
+void bit2w(int a, FILE *temp, long lid)
+{
+	switch(a)
+	{
+		case 0:	{ fprintf(temp,"%lu\t\tNT'\t\tNT (Hit)\n", lid); break; }
+		case 1: { fprintf(temp,"%lu\t\tNT'\t\tT\n", lid); break; }
+		case 2: { fprintf(temp,"%lu\t\tNT\t\tNT (Hit)\n", lid); break; }
+		case 3: { fprintf(temp,"%lu\t\tNT\t\tT\n", lid); break; }
+		case 4: { fprintf(temp,"%lu\t\tT\t\tNT\n", lid); break; }
+		case 5: { fprintf(temp,"%lu\t\tT\t\tT (Hit)\n", lid); break; }
+		case 6:	{ fprintf(temp,"%lu\t\tT'\t\tNT\n", lid); break; }
+		case 7:	{ fprintf(temp,"%lu\t\tT'\t\tT (Hit)\n", lid); }
 	}
 }

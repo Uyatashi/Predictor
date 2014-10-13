@@ -1,30 +1,25 @@
 1-bit Predictor
 Prediction	Action
-T		NT
-NT		T
-T		T (Hit)
-T		NT
-NT		T
-T		T (Hit)
-T		NT
-NT		NT (Hit)
-NT		T
-T		NT
-NT		NT (Hit)
-NT		NT (Hit)
-NT		T
-T		NT
-NT		NT (Hit)
-NT		T
-T		NT
-NT		T
-T		T (Hit)
-T		NT
-NT		NT (Hit)
-NT		T
-T		T (Hit)
-T		NT
-NT		NT (Hit)
-NT		NT (Hit)
-NT		NT (Hit)
-NT		T
+4194304		T		T (Hit)
+4194308		T		T (Hit)
+4194308		T		NT
+4194304		NT		T
+4194308		T		T (Hit)
+4194308		T		NT
+4194304		NT		NT (Hit)
+4194336		NT		T
+4194336		T		T (Hit)
+4194336		T		T (Hit)
+4194336		T		T (Hit)
+4194336		T		NT
+4194368		NT		T
+4194368		T		T (Hit)
+4194368		T		T (Hit)
+4194364		T		NT
+4194364		NT		NT (Hit)
+4194364		NT		NT (Hit)
+4194368		NT		T
+4194364		T		NT
+4194364		NT		NT (Hit)
+4194364		NT		NT (Hit)
+4194368		NT		T
