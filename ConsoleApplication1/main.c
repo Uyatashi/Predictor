@@ -51,11 +51,13 @@ int main( int argc, char *argv[] )
 			case(-1):
 			{
 				printf("Wrong address(Comments). Please provide a valid input file.\n");
+				system("pause");
 				return(-1);
 			}
 			case(-2):
 			{
 				printf("Wrong address(invalid character). Please provide a valid input file.\n");
+				system("pause");
 				return(-1);
 			}
 		}
