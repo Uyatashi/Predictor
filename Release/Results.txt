@@ -1,0 +1,4 @@
+Bit1 predictor accuracy : 74
+Bit2 predictor accuracy : 82
+(1,1) correlating predictor accuracy : 91
+Total accuracy :  82

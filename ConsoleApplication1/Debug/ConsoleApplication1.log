@@ -1,18 +1,48 @@
-﻿Build started 9/29/2014 7:07:52 PM.
-     1>Project "O:\Predictor\ConsoleApplication1\ConsoleApplication1.vcxproj" on node 2 (Build target(s)).
+﻿Build started 10/17/2014 3:54:09 PM.
+     1>Project "C:\Users\University\Desktop\Predictor-master\ConsoleApplication1\ConsoleApplication1.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          F:\VS\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TC /analyze- /errorReport:prompt main.c
          main.c
-     1>o:\predictor\consoleapplication1\check.h(6): warning C4018: '<' : signed/unsigned mismatch
-     1>o:\predictor\consoleapplication1\main.c(26): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(33): warning C4013: 'checkhex' undefined; assuming extern returning int
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(169): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(169): warning C4024: 'bit1w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(170): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(170): warning C4024: 'bit1w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(171): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(171): warning C4024: 'bit1w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(172): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(172): warning C4024: 'bit1w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(176): warning C4028: formal parameter 2 different from declaration
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(188): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(188): warning C4024: 'bit2w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(189): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(189): warning C4024: 'bit2w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(190): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(190): warning C4024: 'bit2w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(191): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(191): warning C4024: 'bit2w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(192): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(192): warning C4024: 'bit2w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(193): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(193): warning C4024: 'bit2w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(194): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(194): warning C4024: 'bit2w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(195): warning C4047: 'function' : 'FILE *' differs in levels of indirection from 'unsigned long'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(195): warning C4024: 'bit2w' : different types for formal and actual parameter 2
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\lib1.h(199): warning C4028: formal parameter 2 different from declaration
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\main.c(29): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
                  f:\vs\vc\include\stdio.h(218) : see declaration of 'fopen'
-     1>o:\predictor\consoleapplication1\main.c(19): warning C4101: 'lid' : unreferenced local variable
-     1>o:\predictor\consoleapplication1\main.c(16): warning C4101: 'state' : unreferenced local variable
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\main.c(31): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 f:\vs\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\main.c(32): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+                 f:\vs\vc\include\stdio.h(218) : see declaration of 'fopen'
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\main.c(15): warning C4101: 'flag1' : unreferenced local variable
+     1>c:\users\university\desktop\predictor-master\consoleapplication1\main.c(15): warning C4101: 'state' : unreferenced local variable
        Link:
-         F:\VS\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"O:\Predictor\Debug\ConsoleApplication1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"O:\Predictor\Debug\ConsoleApplication1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"O:\Predictor\Debug\ConsoleApplication1.lib" /MACHINE:X86 Debug\main.obj
-         ConsoleApplication1.vcxproj -> O:\Predictor\Debug\ConsoleApplication1.exe
-     1>Done Building Project "O:\Predictor\ConsoleApplication1\ConsoleApplication1.vcxproj" (Build target(s)).
+         F:\VS\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\University\Desktop\Predictor-master\Debug\ConsoleApplication1.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\University\Desktop\Predictor-master\Debug\ConsoleApplication1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\University\Desktop\Predictor-master\Debug\ConsoleApplication1.lib" /MACHINE:X86 Debug\main.obj
+         ConsoleApplication1.vcxproj -> C:\Users\University\Desktop\Predictor-master\Debug\ConsoleApplication1.exe
+     1>Done Building Project "C:\Users\University\Desktop\Predictor-master\ConsoleApplication1\ConsoleApplication1.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.69
+Time Elapsed 00:00:00.34

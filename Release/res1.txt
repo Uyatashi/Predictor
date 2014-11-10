@@ -1,0 +1,3 @@
+Bit1 predictor accuracy : 67.032097
+Bit2 predictor accuracy : 69.105797
+Total accuracy :  136.137894
