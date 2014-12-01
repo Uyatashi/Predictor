@@ -7,7 +7,7 @@
 #include <string.h>
 #include "lib1.h"
 
-FILE *input1, *out1, *out2, *out3, *res;
+FILE *input1, *out1, *out2, *out3, *out4, *out5, *res;
 int mode;
 int modebit1c = 0;
 
@@ -18,6 +18,7 @@ int main( int argc, char *argv[] )
 	int bc, i;
 	int ic[3];
 	int init = 0;
+	int bhr[5] = {1,1,1,1,1};
 	unsigned long lid[2];
 	unsigned long tempnum;
 	if ( argc != 2 )
@@ -35,6 +36,8 @@ int main( int argc, char *argv[] )
 		initbit1();
 		initbit2();
 		initbit1c();
+		inityp();
+		inittour();
 	}
 	while(1)
 	{
@@ -72,6 +75,7 @@ int main( int argc, char *argv[] )
 						if (tempnum == lid[0])
 					   	{
 							predictors(&prediction1, &prediction2, 1, tempnum, lid[0], 0);// pc++;
+							ypatt(bhr, 1, lid[0]);
 						//	printf("Idio\n %d", pc);
 						//	system("pause");
 							ic[0]++;
@@ -80,6 +84,7 @@ int main( int argc, char *argv[] )
 						else if (flag3 == 0)
 						{
 							predictors(&prediction1, &prediction2, 1, lid[0], lid[0], 1);// pc++;
+							ypatt(bhr, 1, lid[0]);
 						//	printf("Prwth fora diaforetiko\n %d", pc);
 						//	system("pause");
 							lid[2] = tempnum;
@@ -93,6 +98,7 @@ int main( int argc, char *argv[] )
 						{
 						//	branchreport(bc, ic[0]);
 							predictors(&prediction1, &prediction2, 0, lid[0], lid[0], 0);// pc++;
+							ypatt(bhr, 0, lid[0]);
 							resetpredictors(&prediction1, &prediction2);
 							lid[0] = tempnum;
 							bc++;
@@ -110,6 +116,7 @@ int main( int argc, char *argv[] )
 							if (flag1 == 1)
 							{
 								predictors(&prediction1, &prediction2, 1, lid[0], lid[0], 1);// pc++;
+								ypatt(bhr, 1, lid[0]);
 								flag1 = 0;
 							}
 							ic[2]++;
@@ -122,8 +129,10 @@ int main( int argc, char *argv[] )
 							for(i = 1; i < ic[2]; i++)
 							{
 								predictors(&predictionInner1, &predictionInner2, 1, lid[2], lid[0], 1); //pc++;
+								ypatt(bhr, 1, lid[2]);
 							}
 							predictors(&predictionInner1, &predictionInner2, 1, lid[2], lid[0], 1);
+							ypatt(bhr, 1, lid[2]);
 							ic[0]++;
 							ic[1] += ic[2];
 							ic[2] = 0;
@@ -136,6 +145,7 @@ int main( int argc, char *argv[] )
 					//		branchreport(bc-1, ic[0]);
 					//		branchreport(bc, ic[1]);
 							predictors(&prediction1, &prediction2, 0, lid[0], lid[0], 1); //pc++;
+							ypatt(bhr, 0, lid[0]);
 							resetpredictors(&prediction1, &prediction2);
 							resetpredictors(&predictionInner1, &predictionInner2);
 							lid[0] = tempnum;

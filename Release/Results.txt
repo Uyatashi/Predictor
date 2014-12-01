@@ -1,4 +1,6 @@
 Bit1 predictor accuracy : 74
 Bit2 predictor accuracy : 82
 (1,1) correlating predictor accuracy : 91
+Yah-Patt predictor accuracy : 81
+Tournament predictor accuracy : 82
 Total accuracy :  82

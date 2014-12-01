@@ -2,22 +2,26 @@
 #include <stdio.h>
 
 
-extern FILE *input1, *out1, *out2, *out3, *res;
+extern FILE *input1, *out1, *out2, *out3, *out4, *out5, *res;
 extern int mode, modebit1c;
 
 void bit1w(int a, unsigned long temp);
 void bit2w(int a, unsigned long temp);
 void bit1cw(int a, unsigned long temp, unsigned long temp1);
 int checkhex(char* hex);
-
+void push1(int *bhr, int state);
+void bit2ypw(int a, unsigned long temp);
 
 long pc = 0;
 long pc1 = 0;
 long bit1hc = 0;
 long bit2hc = 0;
 long bit1chc = 0;
+long bit2yphc = 0;
+long tourhc = 0;
 int prediction1c = 1;
-float a, b, c;
+int pred[32] = {3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3,3};
+int pos = 0;
 /*typedef struct branch 
 {
    unsigned long val;
@@ -177,6 +181,11 @@ void initbit2() { out2 = fopen("2bitPredictionTable.txt", "w"); fprintf(out2,"2-
 
 void initbit1c() { out3 = fopen("1bitCPredictionTable.txt", "w"); fprintf(out3, "(1,1) Correlating Predictor\nAddress\t\tPrediction\tAction\n"); }
 
+void inityp() { out4 = fopen("YahPattPredictionTable.txt", "w"); fprintf(out4,"Yah-Patt Predictor\nAddress\t\tPrediction\tAction\n"); }
+
+void inittour() { out5 = fopen("TournamentPredictionTable.txt", "w"); fprintf(out5,"Tournament Predictor\nAddress\t\tPredictor\n"); }
+
+
 int bit1(int pr, int s, unsigned long temp)
 {
 	pc++;
@@ -194,35 +203,71 @@ int bit1c(int pr, int s, unsigned long temp, unsigned long temp1)
 	else if ((pr == 0) && (s == 1)) { if (mode == 1) { bit1cw(1, temp, temp1); } return(1); }
 	else { if (mode == 1) { bit1cw(0, temp, temp1); } bit1chc++; return(0); }
 }
-/*int bit1c(int pr, int s, unsigned long temp)
-{
-	if ((pr == 1) && (s == 1))	{ bit1w(3, temp); bit1hc++; return(1); }
-	else if ((pr == 1) && (s == 0)) { bit1w(2, temp); return(0); }
-	else if ((pr == 0) && (s == 1)) { bit1w(1, temp); return(1); }
-	else { bit1w(0, temp); bit1hc++; return(0); }
-}*/
 
 
 void bit1w(int a, unsigned long temp)
 {
 	switch(a)
 	{
-		case 0:	{ fprintf(out1,"%lu\t\tNT\t\tNT (Hit)\n", temp); break; }
-		case 1: { fprintf(out1,"%lu\t\tNT\t\tT\n", temp); break; }
-		case 2: { fprintf(out1,"%lu\t\tT\t\tNT\n", temp); break; }
-		case 3: { fprintf(out1,"%lu\t\tT\t\tT (Hit)\n", temp); }
+		case 0:	
+		{ 
+			fprintf(out1,"%lu\t\tNT\t\tNT (Hit)\n", temp);
+			if (pos == 1) { pos = 0; }
+			tourhc++;
+			break;
+		}
+		case 1:
+		{ 
+			fprintf(out1,"%lu\t\tNT\t\tT\n", temp);
+			pos++;
+			break; 
+		}
+		case 2: 
+		{ 
+			fprintf(out1,"%lu\t\tT\t\tNT\n", temp);
+			pos++;
+			break;
+		}
+		case 3: 
+		{ 
+			fprintf(out1,"%lu\t\tT\t\tT (Hit)\n", temp);
+			if (pos == 1) { pos = 0; }
+			tourhc++; 
+		}
 	}
 }
 
 void bit1cw(int a, unsigned long temp, unsigned long temp1)
 {
-	//if (modebit1c == 1) { fprintf(out3,"%lu\t\tT\t\tT (Hit)\n", temp1); modebit1c = 0; }
 	switch(a)
 	{
-		case 0:	{ fprintf(out3,"%lu\t\tNT\t\tNT (Hit)\n", temp); break; }
-		case 1: { fprintf(out3,"%lu\t\tNT\t\tT\n", temp); break; }
-		case 2: { fprintf(out3,"%lu\t\tT\t\tNT\n", temp); break; }
-		case 3: { fprintf(out3,"%lu\t\tT\t\tT (Hit)\n", temp); }
+		case 0:	
+		{ 
+			fprintf(out3,"%lu\t\tNT\t\tNT (Hit)\n", temp);
+			if (pos == 3) { pos--; }
+			tourhc++;
+			break;
+		}
+		case 1: 
+		{ 
+			fprintf(out3,"%lu\t\tNT\t\tT\n", temp);
+			if (pos == 3) { pos = 0; } 
+			else { pos++; }
+			break; 
+		}
+		case 2: 
+		{ 
+			fprintf(out3,"%lu\t\tT\t\tNT\n", temp);
+			if (pos == 3) { pos = 0; }
+			else { pos++; }
+			break; 
+		}
+		case 3: 
+		{ 
+			fprintf(out3,"%lu\t\tT\t\tT (Hit)\n", temp);
+			if (pos == 3) { pos--; } 
+			tourhc++;
+		}
 	}
 }
 int bit2(int pr, int s, unsigned long temp)
@@ -235,6 +280,18 @@ int bit2(int pr, int s, unsigned long temp)
 	else if ((pr == 2) && (s == 1)) { if (mode == 1) { bit2w(5, temp); } bit2hc++; return(3); }
 	else if ((pr == 3) && (s == 0)) { if (mode == 1) { bit2w(6, temp); } return(2); }
 	else { if (mode == 1) { bit2w(7, temp); }bit2hc++; return(3); }
+}
+
+int bit2yp(int pr, int s, unsigned long temp)
+{
+	if ((pr == 0)  && (s == 0)) { if (mode == 1) { bit2ypw(0, temp); } bit2yphc++; return(0); }
+	else if ((pr == 0) && (s == 1)) { if (mode == 1) { bit2ypw(1, temp); } return(1); }
+	else if ((pr == 1) && (s == 0)) { if (mode == 1) { bit2ypw(2, temp); } bit2yphc++; return(0); }
+	else if ((pr == 1) && (s == 1)) { if (mode == 1) { bit2ypw(3, temp); } return(2); }
+	else if ((pr == 2) && (s == 0)) { if (mode == 1) { bit2ypw(4, temp); } return(1); }
+	else if ((pr == 2) && (s == 1)) { if (mode == 1) { bit2ypw(5, temp); } bit2yphc++; return(3); }
+	else if ((pr == 3) && (s == 0)) { if (mode == 1) { bit2ypw(6, temp); } return(2); }
+	else { if (mode == 1) { bit2ypw(7, temp); }bit2yphc++; return(3); }
 }
 
 void bit2w(int a, unsigned long temp)
@@ -252,10 +309,50 @@ void bit2w(int a, unsigned long temp)
 	}
 }
 
+void bit2ypw(int a, unsigned long temp)
+{
+	switch(a)
+	{
+		case 0:	{ fprintf(out4,"%lu\t\tNT'\t\tNT (Hit)\n", temp); break; }
+		case 1: { fprintf(out4,"%lu\t\tNT'\t\tT\n", temp); break; }
+		case 2: { fprintf(out4,"%lu\t\tNT\t\tNT (Hit)\n", temp); break; }
+		case 3: { fprintf(out4,"%lu\t\tNT\t\tT\n", temp); break; }
+		case 4: { fprintf(out4,"%lu\t\tT\t\tNT\n", temp); break; }
+		case 5: { fprintf(out4,"%lu\t\tT\t\tT (Hit)\n", temp); break; }
+		case 6:	{ fprintf(out4,"%lu\t\tT'\t\tNT\n", temp); break; }
+		case 7:	{ fprintf(out4,"%lu\t\tT'\t\tT (Hit)\n", temp); }
+	}
+}
+
 void predictors(int *prediction1, int *prediction2, int state, unsigned long tempnum, unsigned long tempnum1, int mode)
 {
+	switch(pos)
+	{
+		case 0:
+		{
+			fprintf(out5,"%lu\t\t1bit(S)\n", tempnum);
+			break;
+		}
+		case 1:
+		{
+			fprintf(out5,"%lu\t\t1bit\n", tempnum);
+			break;
+		}
+		case 2:
+		{
+			fprintf(out5,"%lu\t\t1bitCorrelating\n", tempnum);
+			break;
+		}
+		default:
+		{
+			fprintf(out5,"%lu\t\t1bitCorrelating(S)\n", tempnum);
+		}
+	}
 	*prediction2 = bit2(*prediction2, state, tempnum);
-	if (mode == 0) { *prediction1 = bit1(*prediction1, state, tempnum); }
+	if (mode == 0)
+	{ 
+		*prediction1 = bit1(*prediction1, state, tempnum); }
+		
 	else { prediction1c = bit1c(prediction1c, state, tempnum, tempnum1); }
 }
 
@@ -265,8 +362,29 @@ void resetpredictors(int *prediction1, int *prediction2)
 	*prediction2 = 3;
 }
 
+void ypatt(int bhr[], int state, unsigned long tempnum)
+{
+	int addr = PredSelector(bhr);
+	pred[addr] = bit2yp(pred[addr], state, tempnum);
+	push1(bhr, state);
+}
+
+int PredSelector(int temp[]) { return((temp[0]*2^4 + temp[1]*2^3 + temp[2]*2^2 + temp[3]*2 + temp[4])); }
+
+void push1(int *bhr, int state)
+{
+	bhr[0] = bhr[1];
+	bhr[1] = bhr[2];
+	bhr[2] = bhr[3];
+	bhr[3] = bhr[4];
+	bhr[4] = state;
+}
+
+
+
 void results(int mode)
 {
+	float a, b, c, d, e;
 	switch(mode)
 	{
 		case 1:
@@ -294,10 +412,14 @@ void results(int mode)
 			a = 100 * (float)bit1hc/pc;
 			b = 100 * (float)bit2hc/(pc1 + pc);
 			c = 100 * (float)bit1chc/pc1;
+		    d = 100 * (float)bit2yphc/(pc1 + pc);
+			e = 100 * (float)tourhc/(pc1 + pc);			
 			fprintf(res, "Bit1 predictor accuracy : %00.0f\n", a);
 			fprintf(res, "Bit2 predictor accuracy : %00.0f\n", b);
 			fprintf(res, "(1,1) correlating predictor accuracy : %00.0f\n", c);
-			fprintf(res, "Total accuracy :  %00.0f\n", ((a+b+c)/3));
+			fprintf(res, "Yah-Patt predictor accuracy : %00.0f\n", d);
+			fprintf(res, "Tournament predictor accuracy : %00.0f\n", e);
+			fprintf(res, "Total accuracy :  %00.0f\n", ((a+b+c+d+e)/5));
 			fclose(res);
 		}
 	}
